@@ -1,0 +1,111 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
+| Date         : Sun Aug 29 18:31:31 2021
+| Host         : Tars running 64-bit Ubuntu 18.04.4 LTS
+| Command      : report_utilization -hierarchical -file AccQuant_cnn_utilization_hierarchical_place.rpt
+| Design       : AccQuant_cnn
+| Device       : 7z020clg400-1
+| Design State : Fully Placed
+--------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++----------------------------+---------------------------------+------------+------------+---------+------+------+--------+--------+--------------+
+|          Instance          |              Module             | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP48 Blocks |
++----------------------------+---------------------------------+------------+------------+---------+------+------+--------+--------+--------------+
+| AccQuant_cnn               |                           (top) |      14934 |      12058 |    2876 |    0 | 8285 |     15 |     30 |          121 |
+|   (AccQuant_cnn)           |                           (top) |        284 |        268 |      16 |    0 |  591 |     14 |      0 |            0 |
+|   VexRiscv                 |                        VexRiscv |       2161 |       2161 |       0 |    0 | 1246 |      1 |      8 |            4 |
+|     (VexRiscv)             |                        VexRiscv |        945 |        945 |       0 |    0 | 1019 |      0 |      2 |            4 |
+|     IBusCachedPlugin_cache |                InstructionCache |        690 |        690 |       0 |    0 |  106 |      1 |      1 |            0 |
+|     dataCache_1_           |                       DataCache |        539 |        539 |       0 |    0 |  121 |      0 |      5 |            0 |
+|   accQuant_cnn             |                    accQuant_cnn |      12490 |       9630 |    2860 |    0 | 6448 |      0 |     22 |          117 |
+|     (accQuant_cnn)         |                    accQuant_cnn |          0 |          0 |       0 |    0 |    4 |      0 |      0 |            0 |
+|     clk_5MH                |              clock_divider_fpga |          4 |          4 |       0 |    0 |    5 |      0 |      0 |            0 |
+|     clk_fourth             |              clock_divider_dens |          9 |          9 |       0 |    0 |   29 |      0 |      0 |            0 |
+|     clk_second             |                   clock_divider |         11 |         11 |       0 |    0 |   29 |      0 |      0 |            0 |
+|     clk_third              |               clock_divider_max |         10 |         10 |       0 |    0 |   29 |      0 |      0 |            0 |
+|     conv1                  |                     convolution |        159 |        159 |       0 |    0 |  287 |      0 |      0 |           14 |
+|       (conv1)              |                     convolution |         93 |         93 |       0 |    0 |  170 |      0 |      0 |            9 |
+|       activation           |                         ReLu_17 |         24 |         24 |       0 |    0 |   45 |      0 |      0 |            0 |
+|       quant                |                    quantization |         43 |         43 |       0 |    0 |   72 |      0 |      0 |            5 |
+|     conv2                  |     convolution__parameterized0 |        159 |        159 |       0 |    0 |  287 |      0 |      0 |           14 |
+|       (conv2)              |     convolution__parameterized0 |         93 |         93 |       0 |    0 |  170 |      0 |      0 |            9 |
+|       activation           |                         ReLu_16 |         24 |         24 |       0 |    0 |   45 |      0 |      0 |            0 |
+|       quant                |    quantization__parameterized0 |         43 |         43 |       0 |    0 |   72 |      0 |      0 |            5 |
+|     conv3                  |     convolution__parameterized1 |        157 |        157 |       0 |    0 |  287 |      0 |      0 |           14 |
+|       (conv3)              |     convolution__parameterized1 |         91 |         91 |       0 |    0 |  170 |      0 |      0 |            9 |
+|       activation           |                            ReLu |         24 |         24 |       0 |    0 |   45 |      0 |      0 |            0 |
+|       quant                |    quantization__parameterized1 |         43 |         43 |       0 |    0 |   72 |      0 |      0 |            5 |
+|     dense_0                |                  full_connected |         84 |         84 |       0 |    0 |   91 |      0 |      0 |            6 |
+|       (dense_0)            |                  full_connected |         30 |         30 |       0 |    0 |   21 |      0 |      0 |            1 |
+|       quant                | quantization__parameterized2_15 |         55 |         55 |       0 |    0 |   70 |      0 |      0 |            5 |
+|     dense_1                |  full_connected__parameterized0 |         83 |         83 |       0 |    0 |   91 |      0 |      0 |            6 |
+|       (dense_1)            |  full_connected__parameterized0 |         24 |         24 |       0 |    0 |   21 |      0 |      0 |            1 |
+|       quant                | quantization__parameterized2_14 |         60 |         60 |       0 |    0 |   70 |      0 |      0 |            5 |
+|     dense_2                |  full_connected__parameterized1 |         86 |         86 |       0 |    0 |   91 |      0 |      0 |            6 |
+|       (dense_2)            |  full_connected__parameterized1 |         32 |         32 |       0 |    0 |   21 |      0 |      0 |            1 |
+|       quant                | quantization__parameterized2_13 |         55 |         55 |       0 |    0 |   70 |      0 |      0 |            5 |
+|     dense_3                |  full_connected__parameterized2 |         94 |         94 |       0 |    0 |   91 |      0 |      0 |            6 |
+|       (dense_3)            |  full_connected__parameterized2 |         27 |         27 |       0 |    0 |   21 |      0 |      0 |            1 |
+|       quant                | quantization__parameterized2_12 |         68 |         68 |       0 |    0 |   70 |      0 |      0 |            5 |
+|     dense_4                |  full_connected__parameterized3 |         85 |         85 |       0 |    0 |   91 |      0 |      0 |            6 |
+|       (dense_4)            |  full_connected__parameterized3 |         31 |         31 |       0 |    0 |   21 |      0 |      0 |            1 |
+|       quant                | quantization__parameterized2_11 |         55 |         55 |       0 |    0 |   70 |      0 |      0 |            5 |
+|     dense_5                |                full_connected_0 |         89 |         89 |       0 |    0 |   91 |      0 |      0 |            6 |
+|       (dense_5)            |                full_connected_0 |         30 |         30 |       0 |    0 |   21 |      0 |      0 |            1 |
+|       quant                | quantization__parameterized2_10 |         60 |         60 |       0 |    0 |   70 |      0 |      0 |            5 |
+|     dense_6                |                full_connected_1 |         84 |         84 |       0 |    0 |   91 |      0 |      0 |            6 |
+|       (dense_6)            |                full_connected_1 |         30 |         30 |       0 |    0 |   21 |      0 |      0 |            1 |
+|       quant                |  quantization__parameterized2_9 |         55 |         55 |       0 |    0 |   70 |      0 |      0 |            5 |
+|     dense_7                |                full_connected_2 |         97 |         97 |       0 |    0 |   91 |      0 |      0 |            6 |
+|       (dense_7)            |                full_connected_2 |         30 |         30 |       0 |    0 |   21 |      0 |      0 |            1 |
+|       quant                |  quantization__parameterized2_8 |         68 |         68 |       0 |    0 |   70 |      0 |      0 |            5 |
+|     dense_8                |                full_connected_3 |         98 |         98 |       0 |    0 |   91 |      0 |      0 |            6 |
+|       (dense_8)            |                full_connected_3 |         30 |         30 |       0 |    0 |   21 |      0 |      0 |            1 |
+|       quant                |  quantization__parameterized2_7 |         69 |         69 |       0 |    0 |   70 |      0 |      0 |            5 |
+|     dense_9                |                full_connected_4 |         91 |         91 |       0 |    0 |   91 |      0 |      0 |            6 |
+|       (dense_9)            |                full_connected_4 |         30 |         30 |       0 |    0 |   21 |      0 |      0 |            1 |
+|       quant                |    quantization__parameterized2 |         62 |         62 |       0 |    0 |   70 |      0 |      0 |            5 |
+|     image                  |                    memory_image |       3607 |        747 |    2860 |    0 |    1 |      0 |      0 |            9 |
+|     maxpooling_1           |                      maxpooling |         76 |         76 |       0 |    0 |   87 |      0 |      0 |            0 |
+|     maxpooling_2           |                    maxpooling_5 |         76 |         76 |       0 |    0 |   86 |      0 |      0 |            0 |
+|     maxpooling_3           |                    maxpooling_6 |         76 |         76 |       0 |    0 |   86 |      0 |      0 |            0 |
+|     mem_dens_0             |                   memory_dens_0 |          0 |          0 |       0 |    0 |    0 |      0 |      1 |            0 |
+|     mem_dens_1             |                   memory_dens_1 |          0 |          0 |       0 |    0 |    0 |      0 |      1 |            0 |
+|     mem_dens_2             |                   memory_dens_2 |          0 |          0 |       0 |    0 |    0 |      0 |      1 |            0 |
+|     mem_dens_3             |                   memory_dens_3 |          0 |          0 |       0 |    0 |    0 |      0 |      1 |            0 |
+|     mem_dens_4             |                   memory_dens_4 |          0 |          0 |       0 |    0 |    0 |      0 |      1 |            0 |
+|     mem_dens_5             |                   memory_dens_5 |          0 |          0 |       0 |    0 |    0 |      0 |      1 |            0 |
+|     mem_dens_6             |                   memory_dens_6 |          0 |          0 |       0 |    0 |    0 |      0 |      1 |            0 |
+|     mem_dens_7             |                   memory_dens_7 |          0 |          0 |       0 |    0 |    0 |      0 |      1 |            0 |
+|     mem_dens_8             |                   memory_dens_8 |          0 |          0 |       0 |    0 |    0 |      0 |      1 |            0 |
+|     mem_dens_9             |                   memory_dens_9 |          0 |          0 |       0 |    0 |    0 |      0 |      1 |            0 |
+|     pos_mem_max            |           counterPositionMemMax |         49 |         49 |       0 |    0 |   33 |      0 |      0 |            0 |
+|     pos_memory_Max_count   |          counterPositionRstlMax |       5920 |       5920 |       0 |    0 |   57 |      0 |      0 |            0 |
+|     pos_memory_conv        |         counterPositionRstlConv |         16 |         16 |       0 |    0 |   11 |      0 |      0 |            0 |
+|     positionConv           |        controlMemoryAddressConv |         48 |         48 |       0 |    0 |   30 |      0 |      0 |            0 |
+|       counter_i            |                 counter_row_max |         21 |         21 |       0 |    0 |   11 |      0 |      0 |            0 |
+|       counter_j            |                 counter_col_max |         27 |         27 |       0 |    0 |   19 |      0 |      0 |            0 |
+|     positionImage          |         controlMemoryAddressImg |         47 |         47 |       0 |    0 |   23 |      0 |      0 |            0 |
+|       (positionImage)      |         controlMemoryAddressImg |          1 |          1 |       0 |    0 |    1 |      0 |      0 |            0 |
+|       counter_i            |                     counter_row |         24 |         24 |       0 |    0 |   11 |      0 |      0 |            0 |
+|       counter_j            |                     counter_col |         22 |         22 |       0 |    0 |   11 |      0 |      0 |            0 |
+|     save_data_1            |              memory_rstl_conv_1 |         10 |         10 |       0 |    0 |    0 |      0 |      4 |            4 |
+|     save_data_2            |              memory_rstl_conv_2 |         11 |         11 |       0 |    0 |    0 |      0 |      4 |            2 |
+|     save_data_3            |              memory_rstl_conv_3 |         11 |         11 |       0 |    0 |    0 |      0 |      4 |            0 |
+|     save_max_1             |               memory_rstl_max_1 |       1106 |       1106 |       0 |    0 | 4072 |      0 |      0 |            0 |
+|     segment7               |                         display |          4 |          4 |       0 |    0 |    7 |      0 |      0 |            0 |
+|     whatIsMajor            |                      predictMax |         41 |         41 |       0 |    0 |   88 |      0 |      0 |            0 |
++----------------------------+---------------------------------+------------+------------+---------+------+------+--------+--------+--------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+
