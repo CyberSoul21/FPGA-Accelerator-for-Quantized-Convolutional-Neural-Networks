@@ -35,6 +35,42 @@ for layer in model.layers:
 conv = model.layers[1].get_weights()
 dense = model.layers[4].get_weights()
 
+conv_w = conv[0]
+conv_w0=[]
+temp0=[]
+conv_w1=[]
+temp1=[]
+conv_w2=[]
+temp2=[]
+
+for x in conv_w:
+	for y in x:
+		temp0.append(y[0][0])
+		temp1.append(y[0][1])
+		temp2.append(y[0][2])
+	conv_w0.append(temp0)
+	conv_w1.append(temp1)
+	conv_w2.append(temp2)
+	temp0=[]
+	temp1=[]
+	temp2=[]
+
+print("**************************************");
+print("**************************************");
+print("conv_w0=")
+print(conv_w0)
+print("**************************************");
+print("**************************************");
+print("conv_w1=")
+print(conv_w1)
+print("**************************************");
+print("**************************************");
+print("conv_w2=")
+print(conv_w2)
+print("conv_bias=")
+print(conv[1])
+
+
 dense_w = dense[0]
 dense_w0 = []
 dense_w1 = []

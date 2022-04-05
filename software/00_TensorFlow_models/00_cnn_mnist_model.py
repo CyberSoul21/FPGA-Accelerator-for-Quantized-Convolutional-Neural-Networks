@@ -51,7 +51,7 @@ print("************************************** ");
 model = keras.Sequential( [
   keras.layers.InputLayer( input_shape=(28, 28) ),
   keras.layers.Reshape( target_shape=(28, 28, 1) ),
-  keras.layers.Conv2D( filters=1, kernel_size=(3, 3), activation="relu" ),
+  keras.layers.Conv2D( filters=3, kernel_size=(3, 3), activation="relu" ),
   #keras.layers.Conv2D( filters=12, kernel_size=(3, 3), activation="relu" ),
   #keras.layers.Conv2D( filters=2, kernel_size=(3, 3), activation="relu" ),
   keras.layers.MaxPooling2D( pool_size=(2, 2) ),
