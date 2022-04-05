@@ -25,17 +25,11 @@ import sys
 import tensorflow as tf
 from tensorflow import keras
 
-
+'''
 def conv_fp(entree, filtre, bias, verbose):
-  ''' Cette fonction fait la convolution (i.e. matmul, bias,
-      ReLU6) utilisée en point flotant en  utilisant Numpy. 
-      entree:            tableau Numpy de entrée.
-      filtre:            filtre 3x3.
-      bias:              valeur bias.
-      conv_tab:          tableau avec la convolution.      '''
 
-  if (verbose == 1):                                       # Imprimer tout
-    np.set_printoptions(threshold=sys.maxsize); 
+  #if (verbose == 1):                                       # Imprimer tout
+  #  np.set_printoptions(threshold=sys.maxsize); 
 
   # Initialisation
   #----------------------------------
@@ -47,16 +41,44 @@ def conv_fp(entree, filtre, bias, verbose):
       # Faire la convolution
       #----------------------------------
       ent = entree[0+i:3+i, 0+j:3+j];                      # Desplacer l'entrée
-      conv_tab[i][j] = np.tensordot(ent, filtre) + bias;   # W*x + bias
+      #conv_tab[i][j] = np.tensordot(ent, filtre) + bias;   # W*x + bias
       #print(ent)
       #print(filtre)
       #input()
-      #conv_tab[i][j] = np.vdot(ent, filtre) + bias;
+      conv_tab[i][j] = np.vdot(ent, filtre) + bias;
       #print(conv_tab[i][j]);
       conv_tab[i][j] = max(conv_tab[i][j], 0);             # ReLU
 
   return conv_tab;
+'''
 
+def conv_fp(entree, filtre, bias, verbose):
+
+  #if (verbose == 1):                                       # Imprimer tout
+    #np.set_printoptions(threshold=sys.maxsize); 
+
+  rstl = 0
+  rangs, colonnes = entree.shape;
+  conv_tab = np.zeros( (rangs-2, colonnes-2) );            # Map des caractéristiques
+  for i in range(0, rangs - 2):
+    for j in range(0, colonnes - 2):
+
+      ent = entree[0+i:3+i, 0+j:3+j];                      # Desplacer l'entrée
+      #conv_tab[i][j] = np.tensordot(ent, filtre) + bias;   # W*x + bias
+      #conv_tab[i][j] = np.vdot(ent, filtre) + bias;
+      for k in range(0,3):
+        for l in range(0,3):
+          rstl = rstl + ent[k][l]*filtre[k][l]
+      conv_tab[i][j] = rstl + bias; 
+      #print(ent)
+      #print(filtre)
+      #print(conv_tab[i][j]);
+      #print(rstl);
+      #input() 
+      rstl = 0;
+      conv_tab[i][j] = max(conv_tab[i][j], 0);             # ReLU
+
+  return conv_tab;
 
 def dict_par_conv(parametres, verbose):
   ''' Cette fonction sert à créer un dictionnaire avec 
@@ -146,20 +168,8 @@ def flatten_np(entree, verbose):
   flat_vec = np.asarray(flat_vec);
   return flat_vec;      
 
-
+'''
 def full_np(entree, poids, bias, verbose):
-  ''' Cette fonction calcule la couche full-connected 
-      utilisée par Tensorflowlite en 
-      utilisant Numpy.
-      entree:            tableau Numpy de entrée (int8).                
-      poids:             tableau de poids (int8).                
-      bias:              tableau de bias  (int32).                
-      output_multiplier: facteur de échelle M0.
-      output_shift:      facteur n < 0 de 2^(-n).
-      offset_ent:        offset d'entrée.
-      offset_sor:        offset de sortie.                
-      offset_fil:        offset de filtre.
-      full_vec:          vecteur Numpy de sortie.          '''
 
   if (verbose == 1):                                       # Imprimer tout
     np.set_printoptions(threshold=sys.maxsize); 
@@ -177,7 +187,32 @@ def full_np(entree, poids, bias, verbose):
     full_vec.append(Wx_b);
 
   return full_vec;  
+'''
 
+def full_np(entree, poids, bias, verbose):
+  full_vec = [];                                           # Vecteur de sortiee
+  rstl = 0;
+  for idx in range(0, len(poids)):
+
+    # Full-connected
+    #----------------------------------
+    #Wx_b = np.tensordot( entree, poids[idx] ) + bias[idx];    # W*x + b
+    #print(entree);
+    #print(poids[idx]);
+    #print(Wx_b);
+    #print(len(poids[idx][0]));
+    #print(len(entree[0]));
+    #input()
+    for i in range(0,len(entree[0])):
+      rstl = rstl + entree[0][i]*poids[idx][0][i]   
+    Wx_b = rstl + bias[idx]
+    rstl = 0; 
+    #print(Wx_b);
+    #print(len(poids[idx][0]));
+    #input()    
+    full_vec.append(Wx_b);
+
+  return full_vec;
 
 def lir_h5_mod(fic_mod, verbose):
   ''' Cette fonction imprime les paramètres du modèle en 

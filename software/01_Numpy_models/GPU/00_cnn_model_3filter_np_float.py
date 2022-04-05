@@ -26,15 +26,15 @@ import sys
 np.set_printoptions(threshold=sys.maxsize) # Printing all the weights
 import tensorflow as tf
 from tensorflow    import keras
-from mes_fonctions_cpu import *
+from mes_fonctions_gpu import *
 
 
 def eva_model(img_test, verbose):
 
-	print(" \n ");
-	print("************************************** ");
-	print(" Convolution                           ");
-	print("************************************** ");
+	#print(" \n ");
+	#print("************************************** ");
+	#print(" Convolution                           ");
+	#print("************************************** ");
 	data_input = img_test;	
 
 	conv_w0= \
@@ -64,16 +64,16 @@ def eva_model(img_test, verbose):
 	mc_2  = conv_fp(data_input, conv_w2,  conv_b2,  verbose=1); 
 
 
-	print(" \n ");
-	print("************************************** ");
-	print(" MaxPooling (2,2)                      ");
-	print("************************************** ");	
+	#print(" \n ");
+	#print("************************************** ");
+	#print(" MaxPooling (2,2)                      ");
+	#print("************************************** ");	
 
 	mp_0  = maxpool_fp(mc_0,  verbose=1);
 	mp_1  = maxpool_fp(mc_1,  verbose=1);
 	mp_2  = maxpool_fp(mc_2,  verbose=1);
 
-	print(mp_0);  print(mp_1);  print(mp_2);
+	#print(mp_0);  print(mp_1);  print(mp_2);
 	#sys.exit(0); # Finish execution
 
 
@@ -105,10 +105,10 @@ def eva_model(img_test, verbose):
 	con_aux12[:, 0] = mp_0[12,:]; con_aux12[:, 1] = mp_1[12,:]; con_aux12[:, 2] = mp_2[12,:];	
 
 
-	print(" \n ");
-	print("************************************** ");
-	print(" Flatten                               ");
-	print("************************************** ");
+	#print(" \n ");
+	#print("************************************** ");
+	#print(" Flatten                               ");
+	#print("************************************** ");
 	flatten_aux = np.append(con_aux0, con_aux1);
 	flatten_aux = np.append(flatten_aux, con_aux2);
 	flatten_aux = np.append(flatten_aux, con_aux3);
@@ -121,12 +121,13 @@ def eva_model(img_test, verbose):
 	flatten_aux = np.append(flatten_aux, con_aux10);
 	flatten_aux = np.append(flatten_aux, con_aux11);
 	flatten_aux = np.append(flatten_aux, con_aux12);
-	flatten_aux = np.expand_dims(flatten_aux, axis=0); print(flatten_aux);
+	flatten_aux = np.expand_dims(flatten_aux, axis=0); 
+	#print(flatten_aux);
 	#sys.exit(0); # Terminer l'execution
-	print(" \n ");
-	print("************************************** ");
-	print(" Full connected                        ");
-	print("************************************** ");
+	#print(" \n ");
+	#print("************************************** ");
+	#print(" Full connected                        ");
+	#print("************************************** ");
 
 
 
@@ -165,31 +166,34 @@ def eva_model(img_test, verbose):
 	fc_b = [-0.01261908,0.0711169,-0.00640213,-0.01320706,0.03969616,0.02995437,-0.00773464,0.06258242,-0.09850655,-0.01453187];
 
 
-	full_vec =  full_np(flatten_aux, fc_W, fc_b, verbose=1); print(full_vec);
+	full_vec =  full_np(flatten_aux, fc_W, fc_b, verbose=1); 
+	#print(full_vec);
 	digit = np.argmax( full_vec );
-	print(" The inference is: \n", digit);
+	#print(" The inference is: \n", digit);
 
 	return digit;
 
-print(" \n ");
-print("************************************** ");
-print(" Performance Model                  ");
-print("************************************** ");
+start = timer()
+
+#print(" \n ");
+#print("************************************** ");
+#print(" Performance Model                  ");
+#print("************************************** ");
  
 # Load MNIST data set 
 mnist = keras.datasets.mnist;
 (train_images, train_labels), (test_images, test_labels) = mnist.load_data();
 #test_images = test_images[0:1000];
 #test_labels = test_labels[0:1000];
-test_images = test_images[0:100];
-test_labels = test_labels[0:100];
+test_images = test_images[0:1000];
+test_labels = test_labels[0:1000];
  
 # Imprimer quelques images
 fig = plt.figure(figsize=(3,3));
 plt.imshow(test_images[0], cmap="gray", interpolation=None);
 plt.title(test_labels[0]);
 plt.tight_layout();
-plt.show();
+#plt.show();
 #print(img_test);
  
 pre_vec = [];                                              # Vecteur des predictions
@@ -208,13 +212,15 @@ accuracy = ( pre_vec == test_labels ).mean();
 print("Predictions: ", pre_vec );
 print("Test Labels: ", test_labels );
 #print("Exactitude:  ", accuracy);
-print("Accuaracy: ", count,"/100");
+print("Accuaracy: ", count,"/1000");
+print("Time with GPU:", timer()-start)
 
 print("                                      ");
 print("**************************************");
 print("*              Done!                 *");
 print("*             (8-)                   *");
-print("**************************************");	
+print("**************************************");
+
 
 
 	
