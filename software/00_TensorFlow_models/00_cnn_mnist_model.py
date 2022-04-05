@@ -51,8 +51,8 @@ print("************************************** ");
 model = keras.Sequential( [
   keras.layers.InputLayer( input_shape=(28, 28) ),
   keras.layers.Reshape( target_shape=(28, 28, 1) ),
-  #keras.layers.Conv2D( filters=1, kernel_size=(3, 3), activation="relu" ),
-  keras.layers.Conv2D( filters=12, kernel_size=(3, 3), activation="relu" ),
+  keras.layers.Conv2D( filters=1, kernel_size=(3, 3), activation="relu" ),
+  #keras.layers.Conv2D( filters=12, kernel_size=(3, 3), activation="relu" ),
   #keras.layers.Conv2D( filters=2, kernel_size=(3, 3), activation="relu" ),
   keras.layers.MaxPooling2D( pool_size=(2, 2) ),
   keras.layers.Flatten( ),
@@ -73,7 +73,7 @@ print("Accuracy: ", model_accuracy);
 
 # Save models in  H5 
 #------------------------------
-#model.save("models/cnn_1fil_mnist_fp.h5");                
+model.save("models/cnn_1fil_mnist_fp.h5");                
 #model.save("models/cnn_12fil_mnist_fp.h5");                
 #model.save("models/cnn_3fil_mnist_fp.h5");
 #model.save_weights("models/model_weights.h5");
