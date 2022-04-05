@@ -1,3 +1,18 @@
+#/**************************************************************************//**
+# * @file 00_cnn_mnist_model.py
+# *
+# *
+# * @author:
+# * Wilson Javier Almario Rodriguez.
+# *
+# * @date 07/06/2021
+# *
+# *
+# *****************************************************************************/
+#/******************************************************************************
+# * Copyright (C) 2021 by Wilson J. Almario R.
+# *****************************************************************************/
+
 import matplotlib.pyplot as plt
 import numpy as np
 #np.set_printoptions(threshold=sys.maxsize) # Printing all the weights

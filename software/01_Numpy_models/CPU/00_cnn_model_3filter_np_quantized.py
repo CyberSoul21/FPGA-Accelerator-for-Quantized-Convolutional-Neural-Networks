@@ -1,13 +1,18 @@
-import matplotlib as mpl
-mpl.rcParams['legend.fontsize'] = 12;
-mpl.rcParams['axes.labelsize']  = 12; 
-mpl.rcParams['xtick.labelsize'] = 12; 
-mpl.rcParams['ytick.labelsize'] = 12;
-mpl.rcParams['text.usetex'] = True;
-mpl.rcParams['font.family'] = 'sans-serif';
-mpl.rcParams['mathtext.fontset']    = 'dejavusans';
-mpl.rcParams['text.latex.preamble'] = [r'\usepackage{mathrsfs}'];
-mpl.rcParams.update({'font.size': 12});
+#/**************************************************************************//**
+# * @file 00_cnn_mnist_model.py
+# *
+# *
+# * @author:
+# * Wilson Javier Almario Rodriguez.
+# *
+# * @date 07/06/2021
+# *
+# *
+# *****************************************************************************/
+#/******************************************************************************
+# * Copyright (C) 2021 by Wilson J. Almario R.
+# *****************************************************************************/
+
 
 import matplotlib.pyplot as plt
 import numpy as np
