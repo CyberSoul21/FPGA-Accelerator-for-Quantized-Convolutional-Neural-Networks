@@ -48,6 +48,10 @@ def conv_fp(entree, filtre, bias, verbose):
       #----------------------------------
       ent = entree[0+i:3+i, 0+j:3+j];                      # Desplacer l'entrée
       conv_tab[i][j] = np.tensordot(ent, filtre) + bias;   # W*x + bias
+      #print(ent)
+      #print(filtre)
+      #input()
+      #conv_tab[i][j] = np.vdot(ent, filtre) + bias;
       #print(conv_tab[i][j]);
       conv_tab[i][j] = max(conv_tab[i][j], 0);             # ReLU
 

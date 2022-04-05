@@ -173,7 +173,7 @@ def eva_model(img_test, verbose):
 
 print(" \n ");
 print("************************************** ");
-print(" Evaluation du modèle                  ");
+print(" Performance Model                  ");
 print("************************************** ");
  
 # Load MNIST data set 
@@ -212,7 +212,7 @@ print("Accuaracy: ", count,"/100");
 
 print("                                      ");
 print("**************************************");
-print("*  ¡Merci d'utiliser ce logiciel!    *");
+print("*              Done!                 *");
 print("*             (8-)                   *");
 print("**************************************");	
 
